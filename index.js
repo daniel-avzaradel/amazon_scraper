@@ -82,5 +82,5 @@ app.get("/search/:searchQuery", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`listening to port ${PORT}`);
+  console.log(`Server listening to port ${PORT}`);
 });

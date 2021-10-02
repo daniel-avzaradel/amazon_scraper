@@ -26,6 +26,32 @@ app.get("/products/:productId", async (req, res) => {
   }
 });
 
+// GET PRODUCT REVIEWS
+app.get("/products/:productId/reviews", async (req, res) => {
+  const { productId } = req.params;
+  try {
+    const response = await request(
+      `${baseUrl}&url=https://www.amazon.com/product-reviews/${productId}`
+    );
+    res.send(JSON.parse(response));
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+// GET PRODUCT OFFERS
+app.get("/products/:productId/offers", async (req, res) => {
+  const { productId } = req.params;
+  try {
+    const response = await request(
+      `${baseUrl}&url=https://www.amazon.com/gp/offer-listing/${productId}`
+    );
+    res.send(JSON.parse(response));
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`listening to port ${PORT}`);
 });
